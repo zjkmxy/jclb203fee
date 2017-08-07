@@ -1,0 +1,7 @@
+django
+venv
+*.pyc
+static
+.env
+obj
+JCLB203Fee.pyproj

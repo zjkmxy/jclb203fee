@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="{{ STATIC_URL }} /static/jquery-3.2.1.min.js"></script> 
+    <script src="{{ STATIC_URL }} /static/jquery-ui.min.js"></script>
+    <script src="{{ STATIC_URL }} /static/jquery.ui.datepicker-ja.min.js"></script>
+    <link href="{{ STATIC_URL }} /static/jquery-ui.min.css" rel="stylesheet">
+    <script>
+        $(function() {
+            $("#id_dating").datepicker({
+                dateFormat: "yy-mm-dd",
+                showButtonPanel: true
+            });
+        });
+    </script>
+</head>
+<body>
+<form action="./add" method="POST">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="fieldWrapper">
+        {{ form.dating.errors }}
+        <label for="{{ form.dating.id_for_label }}">日付：</label>
+        {{ form.dating }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.desc.errors }}
+        <label for="{{ form.desc.id_for_label }}">摘要：</label>
+        {{ form.desc }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.dr_name.errors }}
+        <label for="{{ form.dr_name.id_for_label }}">借方：</label>
+        {{ form.dr_name }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.cr_name.errors }}
+        <label for="{{ form.cr_name.id_for_label }}">貸方：</label>
+        {{ form.cr_name }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.amount.errors }}
+        <label for="{{ form.amount.id_for_label }}">金額：</label>
+        {{ form.amount }}
+    </div>
+    <div class="fieldWrapper">
+        {{ form.label.errors }}
+        <label for="{{ form.label.id_for_label }}">類別：</label>
+        {{ form.label }}
+    </div>
+    <input type="submit" />
+</form>
+</body>
+</html>

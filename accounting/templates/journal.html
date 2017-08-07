@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>仕訳日記帳</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>
+                    <p>日付</p>
+                </td>
+                <td>
+                    <p>摘要</p>
+                </td>
+                <td>
+                    <p>金額</p>
+                </td>
+                <td>
+                    <p>借方</p>
+                </td>
+                <td>
+                    <p>貸方</p>
+                </td>
+                <td>
+                    <p>類別</p>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for trade in trades %}
+            <tr>
+                <td>
+                    <p>{{ trade.dating }}</p>
+                </td>
+                <td>
+                    <p>{{ trade.desc }}</p>
+                </td>
+                <td>
+                    <p>{{ trade.amount }}</p>
+                </td>
+                <td>
+                    <p>{{ trade.dr_name }}</p>
+                </td>
+                <td>
+                    <p>{{ trade.cr_name }}</p>
+                </td>
+                <td>
+                    <p>{{ trade.label }}</p>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
