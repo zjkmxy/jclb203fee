@@ -1,7 +1,7 @@
 django
 venv
 *.pyc
-static
+staticfiles
 .env
 obj
 JCLB203Fee.pyproj
