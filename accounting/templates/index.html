@@ -1,9 +1,34 @@
-<html>
-<head><title></title></head>
+﻿<!DOCTYPE html>
+
+{% load account_tags %}
+
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>ＪＣＬＢ２０３食事代管理局</title>
+</head>
 
 <body>
-
-{{ content }}
-
+    <p>現在時刻： {{ now_dt|jpdatetime }}</p>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>勘定科目</th>
+                <th>残高</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for account in accounts %}
+            <tr>
+                <td>
+                    <p>{{ account.name }}</p>
+                </td>
+                <td>
+                    <p>{{ account.balance }}</p>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>

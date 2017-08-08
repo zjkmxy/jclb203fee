@@ -1,5 +1,7 @@
 ﻿<!DOCTYPE html>
 
+{% load account_tags %}
+
 <html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
@@ -9,31 +11,31 @@
     <table border="1">
         <thead>
             <tr>
-                <td>
+                <th>
                     <p>日付</p>
-                </td>
-                <td>
+                </th>
+                <th>
                     <p>摘要</p>
-                </td>
-                <td>
+                </th>
+                <th>
                     <p>金額</p>
-                </td>
-                <td>
+                </th>
+                <th>
                     <p>借方</p>
-                </td>
-                <td>
+                </th>
+                <th>
                     <p>貸方</p>
-                </td>
-                <td>
+                </th>
+                <th>
                     <p>類別</p>
-                </td>
+                </th>
             </tr>
         </thead>
         <tbody>
             {% for trade in trades %}
             <tr>
                 <td>
-                    <p>{{ trade.dating }}</p>
+                    <p>{{ trade.dating|jpdate }}</p>
                 </td>
                 <td>
                     <p>{{ trade.desc }}</p>

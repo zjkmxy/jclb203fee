@@ -18,7 +18,7 @@ admin.autodiscover()
 
 urlpatterns = [
     # Examples:
-    url(r'^$', app.views.home, name='home'),
+    #url(r'^$', app.views.home, name='home'),
     url(r'^contact$', app.views.contact, name='contact'),
     url(r'^about', app.views.about, name='about'),
     url(r'^login/$',
@@ -46,7 +46,7 @@ urlpatterns = [
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^test$', accounting.views.test),
+    url(r'^$', accounting.views.index),
     url(r'^add$', accounting.views.addTrade),
     url(r'^journal$', accounting.views.journal),
 ]

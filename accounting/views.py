@@ -3,17 +3,20 @@ from django.http import HttpRequest
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from accounting.forms import TradeForm
-from accounting.models import Trade
+from accounting.models import Trade, Category
+from datetime import datetime
 
 # Create your views here.
-def test(request):
-    """テストページ"""
+def index(request):
+    """ホームページ"""
     assert isinstance(request, HttpRequest)
+    accounts = Category.objects.all()
     return render(
         request,
         'index.html',
         {
-            'content':'テストページ',
+            'now_dt':datetime.now(),
+            'accounts':accounts,
         }
     )
 

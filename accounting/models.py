@@ -1,5 +1,6 @@
 from django.db import models
 from accounting.utils import formatDate
+from django.db.models import Sum
 
 # Create your models here.
 class Label(models.Model):
@@ -19,6 +20,19 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+    def balance(self):
+        """残高計算"""
+        # 借方
+        debit  = Trade.objects.filter(dr_name=self).aggregate(Sum('amount'))['amount__sum']
+        if debit is None:
+            debit = 0
+        # 貸方
+        credit = Trade.objects.filter(cr_name=self).aggregate(Sum('amount'))['amount__sum']
+        if credit is None:
+            credit = 0
+        # 残高
+        return debit - credit
 
 class Trade(models.Model):
     """
