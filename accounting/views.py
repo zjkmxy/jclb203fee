@@ -5,6 +5,7 @@ from django.template import RequestContext
 from accounting.forms import TradeForm
 from accounting.models import Trade, Category
 from datetime import datetime
+from operator import itemgetter, attrgetter
 
 # Create your views here.
 def index(request):
@@ -40,5 +41,25 @@ def journal(request):
         'journal.html',
         {
             'trades':trades,
+        }
+    )
+
+def ledger(request):
+    """元帳ページ"""
+    assert isinstance(request, HttpRequest)
+    account_id = request.GET['account']
+    account_title = Category.objects.filter(id=account_id)[0].name
+
+    debit = Trade.objects.filter(dr_name__id=account_id)
+    credit = Trade.objects.filter(cr_name__id=account_id)
+    ret = [(cur.dating, cur.desc, True, cur.amount) for cur in debit]
+    ret = ret + [(cur.dating, cur.desc, False, cur.amount) for cur in credit]
+    ret = sorted(ret, key=itemgetter(0))
+    return render(
+        request,
+        'general_ledger.html',
+        {
+            'account_title':account_title,
+            'results':ret,
         }
     )

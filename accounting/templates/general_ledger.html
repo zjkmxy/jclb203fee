@@ -8,6 +8,20 @@
     <title>総勘定元帳‐{{ account_title }}</title>
 </head>
 <body>
-
+    <table border="1">
+        <thead>
+            <tr>
+                <th>日付</th>
+                <th>摘要</th>
+                <th>借方</th>
+                <th>貸方</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in results %}
+            {{ result|format_ledger }}
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>

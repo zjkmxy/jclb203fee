@@ -49,4 +49,5 @@ urlpatterns = [
     url(r'^$', accounting.views.index),
     url(r'^add$', accounting.views.addTrade),
     url(r'^journal$', accounting.views.journal),
+    url(r'^ledger/', accounting.views.ledger),
 ]
