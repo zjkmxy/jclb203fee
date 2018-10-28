@@ -1,4 +1,4 @@
-django >=1.9, <2
+django >=2.0.8
 psycopg2 >=2
 dj-database-url >=0.4
 gunicorn >=19
